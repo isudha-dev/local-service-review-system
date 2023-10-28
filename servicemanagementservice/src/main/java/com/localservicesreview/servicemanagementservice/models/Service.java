@@ -1,5 +1,6 @@
 package com.localservicesreview.servicemanagementservice.models;
 
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -44,16 +45,25 @@ public class Service extends BaseModel {
     private Set<Category> categories = new HashSet<>();
     private String google_map_link;
     private ServiceState serviceState;
-    @OneToMany
+    @OneToMany(mappedBy = "service")
     private Set<Period> weeklyOpenPeriods;
     @OneToMany
-    @JoinColumn(name="photo_id")
+    @JoinTable(
+        name="service_photo",
+        joinColumns = @JoinColumn(name="service_id"),
+        inverseJoinColumns = @JoinColumn(name="photo_id")
+    )
     private Set<Photo> photos;
-    @OneToOne(mappedBy = "service")
+    @OneToOne
     private Location location;
     private double rating;
     private int totalUserRatings;
 
     @OneToMany
+    @JoinTable(
+        name="service_review",
+        joinColumns = @JoinColumn(name="service_id"),
+        inverseJoinColumns = @JoinColumn(name="review_id")
+    )
     private Set<Review> reviews;
 }

@@ -1,7 +1,7 @@
 package com.localservicesreview.servicemanagementservice.models;
 
-import java.util.UUID;
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +13,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Photo extends BaseModel{
-    private UUID serviceId;
+
+    @ManyToOne
+    private Service service;
     private String url;
 
 

@@ -15,8 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location extends BaseModel{
-    @OneToOne
-    @JoinColumn(name = "service_id")
+    @OneToOne(mappedBy = "location")
     private Service service;
     private double latitude;
     private double longitude;
