@@ -2,7 +2,6 @@ package com.localservicesreview.servicemanagementservice.models;
 
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +14,13 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Review extends BaseModel{
 
-    @ManyToOne
-    private Service service;
+//    @ManyToOne
+//    @JoinTable(
+//        name="service_review",
+//        joinColumns = @JoinColumn(name="review_id"),
+//        inverseJoinColumns = @JoinColumn(name="service_id")
+//    )
+//    private Service service;
     private String authorName;
     private String language;
     private double rating;

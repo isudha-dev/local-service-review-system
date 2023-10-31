@@ -1,9 +1,6 @@
 package com.localservicesreview.servicemanagementservice.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location extends BaseModel{
-    @OneToOne(mappedBy = "location")
-    private Service service;
+//    @OneToOne
+//    @JoinColumn(name = "service_id")
+//    private Service service;
     private double latitude;
     private double longitude;
 }

@@ -1,9 +1,6 @@
 package com.localservicesreview.servicemanagementservice.models;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,8 +12,13 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Period extends BaseModel {
-    @ManyToOne
-    private Service service;
+//    @ManyToOne
+//    @JoinTable(
+//        name="service_period",
+//        joinColumns = @JoinColumn(name="period_id"),
+//        inverseJoinColumns = @JoinColumn(name="service_id")
+//    )
+//    private Service service;
     private int day;
     private int open;
     private int close;

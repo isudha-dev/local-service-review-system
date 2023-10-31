@@ -1,9 +1,6 @@
 package com.localservicesreview.servicemanagementservice.models;
 
-import java.time.LocalTime;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -28,42 +25,40 @@ import lombok.Setter;
 public class Service extends BaseModel {
     private UUID creatorId;
     private String name;
-    private String phone_number;
+    private String phoneNumber;
     private String email;
-    @OneToOne(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
-    @Fetch(FetchMode.JOIN)
-    private Address address;
     private String formattedAddress;
     private String website;
     private String ownerName;
-    @ManyToMany
+    private String googleMapLink;
+    private ServiceState serviceState;
+    private double rating;
+    private int totalUserRatings;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Fetch(FetchMode.JOIN)
+    private Location location;
+
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private Address address;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
         name="service_category",
         joinColumns = @JoinColumn(name="service_id"),
         inverseJoinColumns = @JoinColumn(name="category_id")
     )
-    private Set<Category> categories = new HashSet<>();
-    private String google_map_link;
-    private ServiceState serviceState;
-    @OneToMany(mappedBy = "service")
-    private Set<Period> weeklyOpenPeriods;
-    @OneToMany
-    @JoinTable(
-        name="service_photo",
-        joinColumns = @JoinColumn(name="service_id"),
-        inverseJoinColumns = @JoinColumn(name="photo_id")
-    )
-    private Set<Photo> photos;
-    @OneToOne
-    private Location location;
-    private double rating;
-    private int totalUserRatings;
+    @Fetch(FetchMode.JOIN)
+    private List<Category> categories;
 
-    @OneToMany
-    @JoinTable(
-        name="service_review",
-        joinColumns = @JoinColumn(name="service_id"),
-        inverseJoinColumns = @JoinColumn(name="review_id")
-    )
-    private Set<Review> reviews;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(FetchMode.JOIN)
+    private List<Period> periods;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Photo> photos;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Review> reviews;
 }
