@@ -21,16 +21,22 @@ import com.localservicesreview.servicemanagementservice.models.ServiceState;
 import com.localservicesreview.servicemanagementservice.repositories.CategoryRepo;
 import com.localservicesreview.servicemanagementservice.repositories.PeriodRepo;
 import com.localservicesreview.servicemanagementservice.repositories.ServiceRepo;
+import com.localservicesreview.servicemanagementservice.thirdPartyClients.rating.RatingService;
+import com.localservicesreview.servicemanagementservice.thirdPartyClients.reviews.ReviewService;
 
 @org.springframework.stereotype.Service
 public class ServiceService {
     private ServiceRepo serviceRepo;
     private CategoryRepo categoryRepo;
     private PeriodRepo periodRepo;
-    public ServiceService(ServiceRepo serviceRepo, CategoryRepo categoryRepo, PeriodRepo periodRepo){
+    private RatingService ratingService;
+    private ReviewService reviewService;
+    public ServiceService(ServiceRepo serviceRepo, CategoryRepo categoryRepo, PeriodRepo periodRepo, RatingService ratingService, ReviewService reviewService){
         this.serviceRepo = serviceRepo;
         this.categoryRepo = categoryRepo;
         this.periodRepo = periodRepo;
+        this.ratingService = ratingService;
+        this.reviewService = reviewService;
     }
 
     public CreateServiceResponseDto createService(CreateServiceRequestDto requestDto) {
@@ -69,7 +75,7 @@ public class ServiceService {
         newService.setServiceState(ServiceState.OPERATIONAL);
         newService.setPeriods(requestDto.getWeeklyOpenPeriods());
         newService.setPhotos(new ArrayList<>());
-        newService.setTotalUserRatings(0);
+        newService.setTotalUserRatings(0l);
         newService.setReviews(new ArrayList<>());
         newService.setLocation(requestDto.getLocation());
         newService.setCreatorId(UUID.randomUUID());
@@ -85,6 +91,15 @@ public class ServiceService {
         if(!service.isPresent()){
             throw new ServiceNotFoundException("Service service: Service not found with id: "+serviceId);
         }
+        //get ratings
+        service.get().setRating(ratingService.getRatingsByServiceId(serviceId));
+        service.get().setTotalUserRatings(ratingService.getTotalRatingsByServiceId(serviceId));
+
+        //get reviews
+        service.get().setReviews(reviewService.getReviewsByServiceId(serviceId));
+
+
+
         GetServiceResponseDto serviceResponseDto = GetServiceResponseDto.from(service.get());
         // open now
         serviceResponseDto.setOpenNow(true);// checkIfServiceOpen(serviceId) TODO

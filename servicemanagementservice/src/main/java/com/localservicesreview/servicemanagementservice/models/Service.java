@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import com.localservicesreview.servicemanagementservice.thirdPartyClients.reviews.GetReviewDto;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -33,7 +34,7 @@ public class Service extends BaseModel {
     private String googleMapLink;
     private ServiceState serviceState;
     private double rating;
-    private int totalUserRatings;
+    private Long totalUserRatings;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @Fetch(FetchMode.JOIN)

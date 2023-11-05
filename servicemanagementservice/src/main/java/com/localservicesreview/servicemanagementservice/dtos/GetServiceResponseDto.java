@@ -49,7 +49,7 @@ public class GetServiceResponseDto {
     private boolean openNow;
     private double rating;
     @JsonProperty("total_user_ratings")
-    private int totalUserRatings;
+    private Long totalUserRatings;
     private List<Review> reviews;
 
     public static GetServiceResponseDto from(Service service) {

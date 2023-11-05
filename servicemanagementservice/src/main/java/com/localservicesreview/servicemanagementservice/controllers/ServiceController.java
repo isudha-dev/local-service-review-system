@@ -42,7 +42,7 @@ public class ServiceController {
         return new ResponseEntity<>(serviceResponseDto, HttpStatus.OK);
     }
 
-    //get all services
+    //get all services - internal
     @GetMapping
     public ResponseEntity<List<GetServiceResponseDto>> getAllServices(){
         List<GetServiceResponseDto> serviceResponseDto = serviceService.getAllServices();
