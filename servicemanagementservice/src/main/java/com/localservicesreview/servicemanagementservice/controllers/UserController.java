@@ -1,8 +1,14 @@
 package com.localservicesreview.servicemanagementservice.controllers;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import com.localservicesreview.servicemanagementservice.dtos.AuthenticationResponseDto;
+import com.localservicesreview.servicemanagementservice.dtos.LoginRequestDto;
+import com.localservicesreview.servicemanagementservice.dtos.SignupRequestDto;
 import com.localservicesreview.servicemanagementservice.thirdPartyClients.user.UserService;
 
 @Controller
@@ -15,13 +21,13 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public Object createUser(){
-        return userService.createUser();
+    public ResponseEntity<AuthenticationResponseDto> createUser(@RequestBody SignupRequestDto request){
+        return new ResponseEntity<>(userService.createUser(request), HttpStatus.OK);
     }
 
     @PostMapping("/login")
-    public Object loginUser(){
-        return userService.loginUser();
+    public ResponseEntity<AuthenticationResponseDto> loginUser(@RequestBody LoginRequestDto request){
+        return new ResponseEntity<>(userService.loginUser(request), HttpStatus.OK);
     }
 
     @PostMapping("/logout")
