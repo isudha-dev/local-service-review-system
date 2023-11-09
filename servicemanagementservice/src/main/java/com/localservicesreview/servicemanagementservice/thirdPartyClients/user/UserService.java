@@ -9,6 +9,7 @@ import com.localservicesreview.servicemanagementservice.dtos.AuthenticationRespo
 import com.localservicesreview.servicemanagementservice.dtos.LoginRequestDto;
 import com.localservicesreview.servicemanagementservice.dtos.ReviewDto;
 import com.localservicesreview.servicemanagementservice.dtos.SignupRequestDto;
+import com.localservicesreview.servicemanagementservice.dtos.ValidateTokenRequestDto;
 
 @Service
 public class UserService {
@@ -17,16 +18,25 @@ public class UserService {
     private String usersUrl;
     private String signupEndpoint;
     private String loginEndpoint;
+    private String validateEndpoint;
     public UserService(RestTemplateBuilder restTemplateBuilder, @Value("${users.url}") String usersUrl,
-        @Value("${users.api.signup.endpoint}") String signupEndpoint, @Value("${users.api.login.endpoint}") String loginEndpoint){
+        @Value("${users.api.signup.endpoint}") String signupEndpoint, @Value("${users.api.login.endpoint}") String loginEndpoint, @Value("${users.api.validate.endpoint}") String validateEndpoint){
 
         restTemplate = restTemplateBuilder.build();
         this.usersUrl = usersUrl;
         this.signupEndpoint = signupEndpoint;
         this.loginEndpoint = loginEndpoint;
+        this.validateEndpoint = validateEndpoint;
     }
 
-    public boolean validateToken(){
+    public boolean validateToken(String token){
+        ValidateTokenRequestDto dto = new ValidateTokenRequestDto();
+        dto.setToken(token);
+        ResponseEntity<AuthenticationResponseDto> response = restTemplate.postForEntity(usersUrl+validateEndpoint, dto,
+            AuthenticationResponseDto.class);
+        if(response.getBody().getToken().equals(token)){
+            return true;
+        }
         return false;
     }
 
@@ -42,11 +52,4 @@ public class UserService {
         return response.getBody();
     }
 
-    public Object logoutUser(){
-        return null;
-    }
-
-    public Object getUserIdForToken(){
-        return null;
-    }
 }

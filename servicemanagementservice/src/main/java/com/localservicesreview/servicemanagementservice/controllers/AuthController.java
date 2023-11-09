@@ -30,16 +30,4 @@ public class AuthController {
         return new ResponseEntity<>(userService.loginUser(request), HttpStatus.OK);
     }
 
-    @PostMapping("/logout")
-    public Object logoutUser(){
-        return userService.logoutUser();
-    }
-
-    public Object validateToken(){
-        return userService.validateToken();
-    }
-
-    public Object getUserIdForToken(){
-        return userService.getUserIdForToken();
-    }
 }
