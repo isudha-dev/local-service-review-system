@@ -49,7 +49,10 @@ public class AuthFilter implements Filter {
                 if(header.equals("authorization")){
                     authTokenFound = true;
                     String token = httpRequest.getHeader(header).substring(7);
-                    userService.validateToken(token);
+                    boolean tokenValidated = userService.validateToken(token);
+                    if(!tokenValidated){
+                        httpResponse.sendError(HttpStatus.UNAUTHORIZED.value(), "Invalid auth token");
+                    }
                     break;
                 }
             }

@@ -34,7 +34,7 @@ public class UserService {
         dto.setToken(token);
         ResponseEntity<AuthenticationResponseDto> response = restTemplate.postForEntity(usersUrl+validateEndpoint, dto,
             AuthenticationResponseDto.class);
-        if(response.getBody().getToken().equals(token)){
+        if(!response.getBody().getToken().isEmpty()){
             return true;
         }
         return false;
