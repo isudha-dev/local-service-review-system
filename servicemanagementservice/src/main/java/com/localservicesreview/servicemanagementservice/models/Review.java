@@ -38,8 +38,8 @@ public class Review extends BaseModel{
         newReview.setUseful(reviewDto.getUseful());
         newReview.setFunny(reviewDto.getFunny());
         newReview.setCool(reviewDto.getCool());
-        if (reviewDto.getAttacthmentTypeEnum()!=null)
-            newReview.setAttachmentType(reviewDto.getAttacthmentTypeEnum().toString());
+        if (reviewDto.getAttachmentTypeEnum()!=null)
+            newReview.setAttachmentType(reviewDto.getAttachmentTypeEnum().toString());
         newReview.setAttachmentUrl(reviewDto.getAttachmentUrl());
         return newReview;
     }

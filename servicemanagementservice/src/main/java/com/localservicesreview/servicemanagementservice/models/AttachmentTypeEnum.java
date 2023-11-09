@@ -1,6 +1,6 @@
 package com.localservicesreview.servicemanagementservice.models;
 
-public enum AttacthmentTypeEnum {
+public enum AttachmentTypeEnum {
         IMAGE,
         VIDEO,
         AUDIO,

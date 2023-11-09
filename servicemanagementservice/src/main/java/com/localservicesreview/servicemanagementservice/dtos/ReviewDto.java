@@ -1,7 +1,7 @@
 package com.localservicesreview.servicemanagementservice.dtos;
 
 import java.util.UUID;
-import com.localservicesreview.servicemanagementservice.models.AttacthmentTypeEnum;
+import com.localservicesreview.servicemanagementservice.models.AttachmentTypeEnum;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,7 +16,7 @@ public class ReviewDto {
     String useful;
     String funny;
     String cool;
-    AttacthmentTypeEnum attacthmentTypeEnum;
+    AttachmentTypeEnum attachmentTypeEnum;
     String attachmentUrl;
 
 }

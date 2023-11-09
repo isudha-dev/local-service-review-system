@@ -2,7 +2,7 @@ package com.localservicesreview.servicemanagementservice.thirdPartyClients.revie
 
 import java.util.Date;
 import java.util.UUID;
-import com.localservicesreview.servicemanagementservice.models.AttacthmentTypeEnum;
+import com.localservicesreview.servicemanagementservice.models.AttachmentTypeEnum;
 
 public class GetReviewDto {
     private UUID userId; // TODO: change it to user object
@@ -20,7 +20,7 @@ public class GetReviewDto {
 
     private String cool;
 
-    private AttacthmentTypeEnum attachmentType;
+    private AttachmentTypeEnum attachmentType;
 
     private String attachmentUrl;
 

@@ -37,10 +37,9 @@ public class ReviewService {
         return reviews;
     }
 
-    public Review createReviewsForServiceId(ReviewDto reviewDto){
-        ResponseEntity<ReviewDto> response = restTemplate.postForEntity(reviewsUrl, reviewDto, ReviewDto.class);
-        Review review = Review.from(response.getBody());
-        return review;
+    public String createReviewsForServiceId(ReviewDto reviewDto){
+        ResponseEntity<String> response = restTemplate.postForEntity(reviewsUrl, reviewDto, String.class);
+        return response.getBody();
     }
 
 }
