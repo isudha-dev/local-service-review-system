@@ -17,6 +17,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class CreateServiceRequestDto {
     private String name;
+
+    @JsonProperty("creator_id")
+    private UUID creatorId;
     @JsonProperty("phone_number")
     private String phoneNumber;
     @JsonProperty("email_id")

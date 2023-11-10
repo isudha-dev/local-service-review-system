@@ -78,7 +78,7 @@ public class ServiceService {
         newService.setTotalUserRatings(0l);
         newService.setReviews(new ArrayList<>());
         newService.setLocation(requestDto.getLocation());
-        newService.setCreatorId(UUID.randomUUID());
+        newService.setCreatorId(requestDto.getCreatorId());
 
         Service savedService = serviceRepo.save(newService);
         CreateServiceResponseDto serviceResponseDto = CreateServiceResponseDto.from(savedService);
@@ -97,8 +97,6 @@ public class ServiceService {
 
         //get reviews
         service.get().setReviews(reviewService.getReviewsByServiceId(serviceId));
-
-
 
         GetServiceResponseDto serviceResponseDto = GetServiceResponseDto.from(service.get());
         // open now

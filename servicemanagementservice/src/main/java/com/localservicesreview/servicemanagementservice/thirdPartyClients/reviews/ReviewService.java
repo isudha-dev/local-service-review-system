@@ -17,15 +17,15 @@ public class ReviewService {
 
     private RestTemplate restTemplate;
     private String reviewsUrl;
-    private String createReviewEndpoint;
-    public ReviewService (RestTemplateBuilder restTemplateBuilder, @Value("${reviews.url}") String reviewsUrl, @Value("${reviews.api.get.endpoint}") String createReviewEndpoint){
+    private String getReviewEndpoint;
+    public ReviewService (RestTemplateBuilder restTemplateBuilder, @Value("${reviews.url}") String reviewsUrl, @Value("${reviews.api.get.endpoint}") String getReviewEndpoint){
         restTemplate = restTemplateBuilder.build();
         this.reviewsUrl = reviewsUrl;
-        this.createReviewEndpoint = createReviewEndpoint;
+        this.getReviewEndpoint = getReviewEndpoint;
     }
 
     public List<Review> getReviewsByServiceId(UUID serviceId) throws ReviewNotFound {
-        ResponseEntity<ReviewDto[]> response = restTemplate.getForEntity(reviewsUrl+createReviewEndpoint+"/"+serviceId, ReviewDto[].class, serviceId);
+        ResponseEntity<ReviewDto[]> response = restTemplate.getForEntity(reviewsUrl+getReviewEndpoint+"/"+serviceId, ReviewDto[].class, serviceId);
         if(response.getBody() == null){
             throw new ReviewNotFound(String.format("Reviews not found for service ", serviceId));
         }

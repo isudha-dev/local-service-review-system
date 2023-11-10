@@ -18,5 +18,8 @@ public class ReviewDto {
     String cool;
     AttachmentTypeEnum attachmentTypeEnum;
     String attachmentUrl;
+    Long likes;
+    Long dislikes;
+
 
 }
