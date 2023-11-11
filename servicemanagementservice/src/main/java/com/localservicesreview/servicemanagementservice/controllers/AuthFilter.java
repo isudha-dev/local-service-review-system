@@ -36,7 +36,7 @@ public class AuthFilter implements Filter {
         HttpServletRequest httpRequest = (HttpServletRequest) request;
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         String uri = httpRequest.getRequestURI();
-        if(uri.equals("/api/v1/auth/login") || uri.equals("/api/v1/auth/signup")){
+        if(uri.equals("/api/v1/auth/login") || uri.equals("/api/v1/auth/signup") || uri.equals("/api/v1/services/hello")){
             filterchain.doFilter(request, response);
             return;
         }

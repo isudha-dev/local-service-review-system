@@ -28,6 +28,11 @@ public class ServiceController {
         this.serviceService = serviceService;
     }
 
+    @GetMapping("/hello")
+    public ResponseEntity<String> sayHello(){
+        return new ResponseEntity<>("Hello, your service is up!!", HttpStatus.OK);
+    }
+
     //post service
     @PostMapping
     public ResponseEntity<CreateServiceResponseDto> createService(@RequestBody CreateServiceRequestDto requestDto) throws Exception {
