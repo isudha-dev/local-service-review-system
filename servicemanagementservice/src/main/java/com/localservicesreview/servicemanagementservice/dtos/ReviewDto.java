@@ -11,15 +11,11 @@ public class ReviewDto {
     UUID id;
     UUID userId;
     UUID serviceId;
-    Integer stars;
     String text;
-    String useful;
-    String funny;
-    String cool;
     AttachmentTypeEnum attachmentTypeEnum;
     String attachmentUrl;
-    Long likes;
-    Long dislikes;
-
+    int usefulCount;
+    int funnyCount;
+    int coolCount;
 
 }

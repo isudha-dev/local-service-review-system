@@ -22,9 +22,9 @@ public class Review extends BaseModel{
     private UUID serviceId;
     private Integer stars;
     private String text;
-    private String useful;
-    private String funny;
-    private String cool;
+    private int usefulCount;
+    private int funnyCount;
+    private int coolCount;
     private String attachmentType;
     private String attachmentUrl;
 
@@ -33,11 +33,10 @@ public class Review extends BaseModel{
         newReview.setId(reviewDto.getId());
         newReview.setUserId(reviewDto.getUserId());
         newReview.setServiceId(reviewDto.getServiceId());
-        newReview.setStars(reviewDto.getStars());
         newReview.setText(reviewDto.getText());
-        newReview.setUseful(reviewDto.getUseful());
-        newReview.setFunny(reviewDto.getFunny());
-        newReview.setCool(reviewDto.getCool());
+        newReview.setUsefulCount(reviewDto.getUsefulCount());
+        newReview.setFunnyCount(reviewDto.getFunnyCount());
+        newReview.setCoolCount(reviewDto.getCoolCount());
         if (reviewDto.getAttachmentTypeEnum()!=null)
             newReview.setAttachmentType(reviewDto.getAttachmentTypeEnum().toString());
         newReview.setAttachmentUrl(reviewDto.getAttachmentUrl());
