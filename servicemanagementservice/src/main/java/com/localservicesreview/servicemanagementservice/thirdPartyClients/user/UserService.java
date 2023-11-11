@@ -9,6 +9,7 @@ import com.localservicesreview.servicemanagementservice.dtos.AuthenticationRespo
 import com.localservicesreview.servicemanagementservice.dtos.LoginRequestDto;
 import com.localservicesreview.servicemanagementservice.dtos.ReviewDto;
 import com.localservicesreview.servicemanagementservice.dtos.SignupRequestDto;
+import com.localservicesreview.servicemanagementservice.dtos.SignupResponseDto;
 import com.localservicesreview.servicemanagementservice.dtos.ValidateTokenRequestDto;
 
 @Service
@@ -40,9 +41,9 @@ public class UserService {
         return false;
     }
 
-    public AuthenticationResponseDto createUser(SignupRequestDto requestDto){
-        ResponseEntity<AuthenticationResponseDto> response = restTemplate.postForEntity(usersUrl+signupEndpoint, requestDto,
-            AuthenticationResponseDto.class);
+    public SignupResponseDto createUser(SignupRequestDto requestDto){
+        ResponseEntity<SignupResponseDto> response = restTemplate.postForEntity(usersUrl+signupEndpoint, requestDto,
+            SignupResponseDto.class);
         return response.getBody();
     }
 

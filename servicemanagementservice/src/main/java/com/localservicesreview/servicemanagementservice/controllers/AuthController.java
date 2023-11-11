@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.localservicesreview.servicemanagementservice.dtos.AuthenticationResponseDto;
 import com.localservicesreview.servicemanagementservice.dtos.LoginRequestDto;
 import com.localservicesreview.servicemanagementservice.dtos.SignupRequestDto;
+import com.localservicesreview.servicemanagementservice.dtos.SignupResponseDto;
 import com.localservicesreview.servicemanagementservice.thirdPartyClients.user.UserService;
 
 @RestController
@@ -21,7 +22,7 @@ public class AuthController {
     }
 
     @PostMapping("/signup")
-    public ResponseEntity<AuthenticationResponseDto> createUser(@RequestBody SignupRequestDto request){
+    public ResponseEntity<SignupResponseDto> createUser(@RequestBody SignupRequestDto request){
         return new ResponseEntity<>(userService.createUser(request), HttpStatus.OK);
     }
 
