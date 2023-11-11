@@ -18,12 +18,10 @@ public class RatingService {
     private String ratingUrl;
     private String getAvgRatingEndpoint;
     private String getTotalRatingEndpoint;
-    private String createRatingEndpoint;
-    public RatingService (RestTemplateBuilder restTemplateBuilder, @Value("${ratings.url}") String reviewsUrl, @Value("${ratings.api.avgRating.endpoint}") String getAvgRating, @Value("${ratings.api.totalRating.endpoint}") String getTotalRating, @Value("${ratings.api.create.endpoint}") String createRating){
+    public RatingService (RestTemplateBuilder restTemplateBuilder, @Value("${ratings.url}") String reviewsUrl, @Value("${ratings.api.avgRating.endpoint}") String getAvgRating, @Value("${ratings.api.totalRating.endpoint}") String getTotalRating){
         restTemplate = restTemplateBuilder.build();
         this.ratingUrl = reviewsUrl;
         this.getAvgRatingEndpoint = getAvgRating;
-        this.createRatingEndpoint = createRating;
         this.getTotalRatingEndpoint = getTotalRating;
     }
 
@@ -44,7 +42,7 @@ public class RatingService {
     }
 
     public RatingDto submitRatingForServiceId(RatingDto ratingDto){
-        ResponseEntity<RatingDto> response = restTemplate.postForEntity(ratingUrl+createRatingEndpoint, ratingDto, RatingDto.class);
+        ResponseEntity<RatingDto> response = restTemplate.postForEntity(ratingUrl, ratingDto, RatingDto.class);
         return response.getBody();
     }
 
