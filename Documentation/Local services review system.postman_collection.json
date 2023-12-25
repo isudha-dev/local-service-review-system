@@ -1,0 +1,227 @@
+{
+	"info": {
+		"_postman_id": "b80aa7ac-c435-4359-983d-e04eb8d5d054",
+		"name": "Local services review system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9387409"
+	},
+	"item": [
+		{
+			"name": "Service management",
+			"item": [
+				{
+					"name": "Add service",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"name\",\n    \"phone_number\": \"number\",\n    \"email_id\": \"email\",\n    \"address\": {\n        \"address_line1\": \"line1\",\n        \"address_line2\": \"line2\",\n        \"city\": \"ciry\",\n        \"postal_code\": \"zip\",\n        \"state\": \"ST\",\n        \"country\": \"country\"\n    },\n    \"service_owner_name\": \"owner_name\",\n    \"category_ids\": [1,2,3],\n    \"google_map_link\": \"map_link\"\n}\n\n// \"created_by\": \"user_id\"\n//\"total_rating\": 5,\n    // \"review_ids\": [1,2,3]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/services",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add service",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"name\",\n    \"phone_number\": \"number\",\n    \"email_id\": \"email\",\n    \"address\": {\n        \"address_line1\": \"line1\",\n        \"address_line2\": \"line2\",\n        \"city\": \"city\",\n        \"postal_code\": \"zip\",\n        \"state\": \"ST\",\n        \"country\": \"country\"\n    },\n    \"website\": \"website\",\n    \"service_owner_name\": \"owner_name\",\n    \"category_ids\": [1,2,3],\n    \"google_map_link\": \"map_link\",\n    \"location\": {\n        \"lat\": -33.866,\n        \"lng\": 151.232\n    },\n    \"weekly_open_periods\": [\n        {\"day\": 1, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 2, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 4, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 5, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 6, \"open\": \"0900\", \"close\": \"1700\"}\n    ],\n    \"service_state\": \"OPERATIONAL\"\n}\n\n// \"created_by\": \"user_id\"\n//\"total_rating\": 5,\n    // \"review_ids\": [1,2,3]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/services",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"services"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    \"service_id\": 1,\n    \"phone_number\": \"number\",\n    \"email_id\": \"email\",\n    \"address\": {\n        \"address_line1\": \"line1\",\n        \"address_line2\": \"line2\",\n        \"city\": \"city\",\n        \"postal_code\": \"zip\",\n        \"state\": \"ST\",\n        \"country\": \"country\"\n    },\n    \"formatted_address\": \"line1, line2, city - zip, country\",\n    \"website\": \"website\",\n    \"service_owner_name\": \"owner_name\",\n    \"category_ids\": [1,2,3],\n    \"google_map_link\": \"map_link\",\n    \"creator_id\": 1,\n    \"service_state\": \"OPERATIONAL\",\n    \"open_now\": true,\n    \"weekly_open_periods\": [\n        {\"day\": 1, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 2, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 4, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 5, \"open\": \"0900\", \"close\": \"1700\"},\n        {\"day\": 6, \"open\": \"0900\", \"close\": \"1700\"}\n    ],\n    \"photos\":[\n        {\n            \"id\": 1,\n            \"url\": \"url1\"\n        },\n        {\n            \"id\": 2,\n            \"url\": \"url2\"\n        }\n    ],\n    \"rating\": 0,\n    \"reviews\": [\n        {\n            \"author_name\": \"name\",\n            \"author_url\": \"url to fetch author details\",\n            \"profile_photo_url\": \"url for author photo\",\n            \"language\": \"en\",\n            \"rating\": 1,\n            \"relative_time_description\": \"a week ago\",\n            \"text\": \"actual review comments\",\n            \"time\": 1652286798\n        }\n    ],\n    \"total_user_ratings\": 500\n\n}"
+						}
+					]
+				},
+				{
+					"name": "Add photo",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": [
+						{
+							"name": "Add photo",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "multipart/form-data",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": [
+												"/Users/smaurya/Downloads/20005131877_396838688_10_2023.pdf",
+												"/Users/smaurya/Downloads/Sudha Maurya Resume_JavaDeveloper (1).pdf"
+											]
+										}
+									],
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8080/services/{service_id}/photos",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"services",
+										"{service_id}",
+										"photos"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    service_id: 1,\n    photo:[\n        {\n            \"id\": 1,\n            \"url\": \"url1\"\n        },\n        {\n            \"id\": 2,\n            \"url\": \"url2\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Search service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/services/search/&input=museum&inputtype=textquery",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"services",
+								"search",
+								"&input=museum&inputtype=textquery"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Search service (text)",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/services/search/&input=museum",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"services",
+										"search",
+										"&input=museum"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    total_count: 2,\n    services:[\n        {\n            \"service_id\": 1,\n            \"name\": \"name1\",\n            \"formatted_address\": \"full address1\",\n            \"category\": {\"cat1\", \"cat2\", \"cat3\"},\n            \"open_now\": true\n            \"phone_number\": 9876543210,\n            \"website\": \"url1\",\n            \"google_map_link\": \"link1\",\n            \"service_url\": \"url to get service1\",\n            \"rating\": 4.5,\n            \"reviews\": [\n                ...\n            ]\n        },\n        {\n            \"service_id\": 2,\n            \"name\": \"name2\",\n            \"formatted_address\": \"full address2\",\n            \"category\": {\"cat5\", \"cat3\"},\n            \"open_now\": false\n            \"phone_number\": 9876543230,\n            \"website\": \"url2\",\n            \"google_map_link\": \"link2\",\n            \"service_url\": \"url to get service2\",\n            \"rating\": 3,\n            \"reviews\": [\n                ...\n            ]\n        }\n    ]\n}"
+						},
+						{
+							"name": "Filter service on category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/services/search/&input=museum&categories=cat1,cat2,cat3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"services",
+										"search",
+										"&input=museum&categories=cat1,cat2,cat3"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    total_count: 1,\n    services:[\n        {\n            \"service_id\": 1,\n            \"name\": \"name1\",\n            \"formatted_address\": \"full address1\",\n            \"category\": {\"cat1\", \"cat2\", \"cat3\"},\n            \"open_now\": true\n            \"phone_number\": 9876543210,\n            \"website\": \"url1\",\n            \"google_map_link\": \"link1\",\n            \"service_url\": \"url to get service1\",\n            \"rating\": 4.5,\n            \"reviews\": [\n                ...\n            ]\n        }\n    ]\n}\n"
+						},
+						{
+							"name": "Filter service on ratings",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/services/search/&input=museum&ratings=4,5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"services",
+										"search",
+										"&input=museum&ratings=4,5"
+									]
+								}
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"body": "{\n    total_count: 1,\n    services:[\n        {\n            \"service_id\": 1,\n            \"name\": \"name1\",\n            \"formatted_address\": \"full address1\",\n            \"category\": {\"cat1\", \"cat2\", \"cat3\"},\n            \"open_now\": true\n            \"phone_number\": 9876543210,\n            \"website\": \"url1\",\n            \"google_map_link\": \"link1\",\n            \"service_url\": \"url to get service1\",\n            \"rating\": 4.5,\n            \"reviews\": [\n                ...\n            ]\n        }\n    ]\n}\n"
+						}
+					]
+				}
+			]
+		}
+	]
+}
